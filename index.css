@@ -1,0 +1,1118 @@
+/* Variables CSS globales para colores, transiciones y estilos reutilizables */
+:root {
+    --primary: #2e7d32; /* Color primario (verde) */
+    --primary-dark: #1b5e20; /* Versión oscura del color primario */
+    --secondary: #0d47a1; /* Color secundario (azul) */
+    --accent: #ff9800; /* Color de acento (naranja) */
+    --dark: #1a1a1a; /* Color para texto oscuro */
+    --light: #f8f9fa; /* Color de fondo claro */
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición suave para animaciones */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra estándar */
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.2); /* Sombra para efectos hover */
+    --radius: 16px; /* Radio de borde para elementos redondeados */
+}
+
+/* Reset básico para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Modelo de caja más predecible */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente principal */
+}
+
+/* Estilos generales del cuerpo del documento */
+body {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e6f7e6 100%); /* Fondo con gradiente suave */
+    color: var(--dark); /* Color de texto principal */
+    line-height: 1.6; /* Espaciado entre líneas */
+    overflow-x: hidden; /* Evita scroll horizontal */
+    position: relative; /* Contexto de posicionamiento */
+}
+
+/* Efecto de fondo decorativo con gradientes radiales */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(46, 125, 50, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(13, 71, 161, 0.05) 0%, transparent 20%);
+    z-index: -1; /* Coloca detrás del contenido */
+    pointer-events: none; /* Permite interacción con elementos debajo */
+}
+
+/* ------------------------- */
+/* ESTILOS DEL ENCABEZADO */
+/* ------------------------- */
+
+/* Barra de navegación fija en la parte superior */
+.modern-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    padding: 15px 0;
+    transition: var(--transition); /* Transición suave para cambios */
+}
+
+/* Contenedor flexible para los elementos de navegación */
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Espacio entre logo y menú */
+    align-items: center;
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 0 20px; /* Espaciado interno */
+}
+
+/* Estilos del logo */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px; /* Espacio entre imagen y texto */
+    transition: var(--transition);
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    transition: var(--transition);
+}
+
+/* Efecto hover para el logo */
+.logo:hover img {
+    transform: rotate(15deg) scale(1.1); /* Rotación y escalado */
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.logo:hover .logo-text {
+    color: var(--primary-dark); /* Cambio de color al hacer hover */
+}
+
+/* Estilos de la navegación principal */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px; /* Espacio entre elementos del menú */
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 30px; /* Bordes redondeados */
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre icono y texto */
+}
+
+/* Efectos hover y estado activo para enlaces */
+nav a:hover, nav a.active {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+}
+
+/* Botón de menú para móviles (oculto por defecto) */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--dark);
+}
+
+/* ------------------------- */
+/* SECCIÓN HERO (PORTADA) */
+/* ------------------------- */
+
+.hero {
+    min-height: 100vh; /* Altura completa de la ventana */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px 60px; /* Espaciado considerando el header fijo */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo decorativo para la sección hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(46, 125, 50, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(13, 71, 161, 0.1) 0%, transparent 30%);
+    z-index: -1;
+}
+
+/* Contenedor del contenido principal del hero */
+.hero-content {
+    max-width: 800px;
+    z-index: 1; /* Asegura que esté por encima del fondo */
+}
+
+/* Icono principal con animación de flotar */
+.hero-icon {
+    font-size: 6rem;
+    margin-bottom: 30px;
+    display: inline-block;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Título principal con efecto de gradiente */
+h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text; /* Aplica gradiente solo al texto */
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    opacity: 0;
+    animation: fadeInUp 1s 0.3s forwards; /* Animación de aparición */
+}
+
+/* Texto descriptivo */
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    color: #444;
+    opacity: 0;
+    animation: fadeInUp 1s 0.5s forwards; /* Animación de aparición */
+}
+
+/* Contenedor de "badges" o etiquetas informativas */
+.badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+    opacity: 0;
+    animation: fadeInUp 1s 0.7s forwards; /* Animación de aparición */
+}
+
+/* Estilos de cada badge individual */
+.badge {
+    background: white;
+    padding: 12px 25px;
+    border-radius: 50px; /* Forma de cápsula */
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+/* Efecto hover para badges */
+.badge:hover {
+    transform: translateY(-5px); /* Elevación */
+    box-shadow: var(--shadow-hover);
+    background: var(--primary); /* Cambio de color */
+    color: white;
+}
+
+/* ------------------------- */
+/* CONTENIDO PRINCIPAL */
+/* ------------------------- */
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px; /* Espaciado interno */
+}
+
+/* Estilos base para cada sección */
+.section {
+    margin-bottom: 100px; /* Espacio entre secciones */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Animación de aparición */
+}
+
+/* Clase que se añade cuando la sección es visible (scroll) */
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Título de sección */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* Subrayado decorativo del título */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+/* Subtítulo de sección */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: -40px;
+    margin-bottom: 40px;
+}
+
+/* Estilos base para tarjetas */
+.card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: var(--transition);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efecto hover para tarjetas */
+.card:hover {
+    transform: translateY(-10px); /* Elevación */
+    box-shadow: var(--shadow-hover);
+}
+
+/* Encabezado de tarjeta */
+.card-header {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Título de tarjeta */
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* ------------------------- */
+/* SECCIÓN ISHIKAWA (DIAGRAMA DE CAUSA-EFECTO) */
+/* ------------------------- */
+
+/* Grid para los elementos de causas */
+.ishikawa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo */
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Elemento individual de causa */
+.cause-item {
+    padding: 25px;
+    background: rgba(46, 125, 50, 0.05); /* Fondo semi-transparente */
+    border-radius: var(--radius);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Efecto decorativo lateral */
+.cause-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+/* Efecto hover para elementos de causa */
+.cause-item:hover::before {
+    width: 100%;
+    opacity: 0.1; /* Se expande con transparencia */
+}
+
+.cause-item:hover {
+    transform: translateY(-5px); /* Elevación */
+}
+
+/* Encabezado del elemento de causa */
+.cause-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* Icono de causa */
+.cause-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    background: rgba(46, 125, 50, 0.1);
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+/* Efecto hover para el icono */
+.cause-item:hover .cause-icon {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1) rotate(10deg); /* Escalado y rotación */
+}
+
+/* Título de causa */
+.cause-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Texto descriptivo */
+.cause-text {
+    color: #555;
+}
+
+/* ------------------------- */
+/* SECCIÓN DESARROLLO SOSTENIBLE */
+/* ------------------------- */
+
+/* Grid para los elementos de desarrollo */
+.development-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsivo */
+    gap: 30px;
+}
+
+/* Tarjeta de desarrollo sostenible */
+.sustainable-card {
+    border-top: 5px solid #16a34a; /* Borde superior color verde */
+}
+
+/* Tarjeta de desarrollo sustentable */
+.sustentable-card {
+    border-top: 5px solid #059669; /* Borde superior color verde oscuro */
+}
+
+/* Elemento "pilar" de desarrollo */
+.pillar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: rgba(22, 163, 74, 0.05); /* Fondo semi-transparente */
+}
+
+/* Punto de color para identificar pilares */
+.pillar-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /* Forma circular */
+}
+
+/* Colores para diferentes pilares */
+.pillar-green { background: #16a34a; }
+.pillar-blue { background: #2563eb; }
+.pillar-purple { background: #7c3aed; }
+
+/* ------------------------- */
+/* SECCIÓN DECLARACIÓN DE RÍO */
+/* ------------------------- */
+
+/* Grid para los principios */
+.rio-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo */
+    gap: 20px;
+}
+
+/* Elemento individual de principio */
+.principle-item {
+    padding: 20px;
+    background: rgba(13, 71, 161, 0.05); /* Fondo semi-transparente */
+    border-radius: var(--radius);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto hover para principios */
+.principle-item:hover {
+    transform: translateY(-5px); /* Elevación */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Número del principio */
+.principle-number {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: var(--secondary);
+    color: white;
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+/* Efecto hover para el número */
+.principle-item:hover .principle-number {
+    transform: scale(1.2); /* Escalado */
+    background: var(--primary); /* Cambio de color */
+}
+
+/* ------------------------- */
+/* SECCIÓN DÍA MUNDIAL DEL AGUA */
+/* ------------------------- */
+
+.water-day {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(0, 200, 255, 0.1) 100%);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto decorativo de fondo (gotas de agua) */
+.water-day::before {
+    content: '💧';
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.03; /* Muy transparente */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    animation: rotate 60s linear infinite; /* Rotación lenta */
+}
+
+/* Icono principal */
+.water-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: pulse 2s infinite; /* Animación de pulso */
+    position: relative;
+    z-index: 1; /* Encima del fondo */
+}
+
+/* Fecha destacada */
+.water-date {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 20px 0;
+    color: var(--secondary);
+    position: relative;
+    z-index: 1;
+}
+
+/* Texto descriptivo */
+.water-description {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* ------------------------- */
+/* SECCIÓN FACTORES DEL ECOSISTEMA */
+/* ------------------------- */
+
+/* Grid para los factores */
+.factors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsivo */
+    gap: 30px;
+}
+
+/* Tarjeta de factores bióticos */
+.bioticos-card {
+    border-top: 5px solid #16a34a; /* Borde superior verde */
+}
+
+/* Tarjeta de factores abióticos */
+.abioticos-card {
+    border-top: 5px solid #2563eb; /* Borde superior azul */
+}
+
+/* Elemento individual de factor */
+.factor-item {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+/* Fondo para factores bióticos */
+.bioticos-card .factor-item {
+    background: rgba(22, 163, 74, 0.05);
+}
+
+/* Fondo para factores abióticos */
+.abioticos-card .factor-item {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+/* Efecto hover para factores */
+.factor-item:hover {
+    transform: translateX(10px); /* Desplazamiento horizontal */
+    background: rgba(22, 163, 74, 0.1);
+}
+
+.abioticos-card .factor-item:hover {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+/* Título del factor */
+.factor-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Punto decorativo antes del título */
+.factor-title::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Forma circular */
+    display: inline-block;
+}
+
+/* Colores para diferentes tipos de factores */
+.biotico::before { background: #16a34a; } /* Verde para bióticos */
+.abiotico::before { background: #2563eb; } /* Azul para abióticos */
+
+/* ------------------------- */
+/* SECCIÓN LEYES ECOLÓGICAS */
+/* ------------------------- */
+
+/* Grid para las leyes */
+.laws-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsivo */
+    gap: 30px;
+}
+
+/* Tarjeta de la ley de Liebig */
+.liebig-card {
+    border-top: 5px solid #d97706; /* Borde superior naranja */
+}
+
+/* Tarjeta de la ley de Shelford */
+.shelford-card {
+    border-top: 5px solid #7c3aed; /* Borde superior morado */
+}
+
+/* Ejemplo de ley */
+.law-example {
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    transition: var(--transition);
+}
+
+/* Estilos específicos para ley de Liebig */
+.liebig .law-example {
+    background: rgba(217, 119, 6, 0.05);
+    border-left: 4px solid #d97706; /* Borde lateral */
+}
+
+/* Estilos específicos para ley de Shelford */
+.shelford .law-example {
+    background: rgba(124, 58, 237, 0.05);
+    border-left: 4px solid #7c3aed; /* Borde lateral */
+}
+
+/* Efecto hover para ejemplos */
+.law-example:hover {
+    transform: translateY(-5px); /* Elevación */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------- */
+/* SECCIÓN CAMBIO CLIMÁTICO */
+/* ------------------------- */
+
+.climate-card {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 193, 7, 0.1) 100%);
+    border-radius: var(--radius);
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo decorativo */
+.climate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 152, 0, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255, 193, 7, 0.1) 0%, transparent 30%);
+    z-index: 0;
+}
+
+/* Encabezado de la sección */
+.climate-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1; /* Encima del fondo */
+}
+
+/* Icono con animación de temblor */
+.climate-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: shake 2s infinite; /* Animación de temblor */
+}
+
+/* Grid para el contenido */
+.climate-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsivo */
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Títulos con colores temáticos */
+.climate-section h3 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: #e65100; /* Naranja oscuro */
+}
+
+.climate-section h4 {
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+    color: #f57c00; /* Naranja */
+}
+
+/* Lista de consecuencias */
+.consequences-list {
+    list-style: none;
+}
+
+.consequences-list li {
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Divisor sutil */
+}
+
+/* Punto decorativo para elementos de lista */
+.consequence-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Forma circular */
+    background: #f57c00; /* Naranja */
+    flex-shrink: 0; /* Evita que se comprima */
+}
+
+/* ------------------------- */
+/* SECCIÓN HUELLAS AMBIENTALES */
+/* ------------------------- */
+
+/* Grid para las huellas */
+.footprints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsivo */
+    gap: 30px;
+}
+
+/* Tarjeta de huella ecológica */
+.ecological-card {
+    border-top: 5px solid #0f766e; /* Borde superior verde azulado */
+}
+
+/* Tarjeta de huella hídrica */
+.hydric-card {
+    border-top: 5px solid #1e40af; /* Borde superior azul oscuro */
+}
+
+/* Información de huella */
+.footprint-info {
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    transition: var(--transition);
+}
+
+/* Estilos específicos para huella ecológica */
+.ecological .footprint-info {
+    background: rgba(15, 118, 110, 0.05);
+    border-left: 4px solid #0f766e; /* Borde lateral */
+}
+
+/* Contenedor para tipos de agua */
+.water-types {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Elemento de tipo de agua */
+.water-type {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: rgba(30, 64, 175, 0.05); /* Fondo semi-transparente */
+}
+
+/* Punto de color para tipos de agua */
+.water-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /* Forma circular */
+}
+
+/* Colores para diferentes tipos de agua */
+.water-blue { background: #1e40af; } /* Azul */
+.water-green { background: #16a34a; } /* Verde */
+.water-gray { background: #6b7280; } /* Gris */
+
+/* ------------------------- */
+/* ESTILOS DE BOTONES */
+/* ------------------------- */
+
+.button-container {
+    text-align: center;
+    margin: 40px 0 20px;
+}
+
+/* Botón principal */
+.section-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    padding: 15px 30px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* Forma de cápsula */
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    cursor: pointer;
+}
+
+/* Efecto de fondo para hover */
+.section-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+/* Efectos hover para botones */
+.section-button:hover {
+    transform: translateY(-5px); /* Elevación */
+    box-shadow: 0 10px 25px rgba(46, 125, 50, 0.4);
+}
+
+.section-button:hover::before {
+    opacity: 1; /* Muestra el gradiente */
+}
+
+.section-button:active {
+    transform: translateY(0); /* Efecto de click */
+}
+
+/* ------------------------- */
+/* PIE DE PÁGINA */
+/* ------------------------- */
+
+.footer {
+    background: var(--dark); /* Fondo oscuro */
+    color: white;
+    padding: 80px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo decorativo */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(46, 125, 50, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(13, 71, 161, 0.1) 0%, transparent 20%);
+    z-index: 0;
+}
+
+/* Icono del footer con animación */
+.footer-icon {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    display: inline-block;
+    animation: float 4s ease-in-out infinite; /* Animación de flotar */
+    position: relative;
+    z-index: 1; /* Encima del fondo */
+}
+
+/* Título del footer */
+.footer h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Texto del footer */
+.footer p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 1.2rem;
+    color: #ddd; /* Gris claro */
+    position: relative;
+    z-index: 1;
+}
+
+/* Separador decorativo */
+.footer-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1); /* Línea sutil */
+    max-width: 600px;
+    margin: 40px auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Texto de copyright */
+.footer-copyright {
+    color: #aaa; /* Gris más claro */
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ------------------------- */
+/* ANIMACIONES */
+/* ------------------------- */
+
+/* Animación de aparición desde abajo */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de flotar (para iconos) */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Animación de pulso (para iconos) */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Animación de rotación (para elementos decorativos) */
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Animación de temblor (para iconos de cambio climático) */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* ------------------------- */
+/* MEDIA QUERIES (RESPONSIVO) */
+/* ------------------------- */
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 900px) {
+    h1 {
+        font-size: 3rem; /* Título más pequeño */
+    }
+    
+    .hero p {
+        font-size: 1.2rem; /* Texto más pequeño */
+    }
+    
+    .section-title {
+        font-size: 2rem; /* Títulos de sección más pequeños */
+    }
+    
+    /* Menú de navegación para móviles */
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column; /* Apilado vertical */
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+    
+    /* Menú visible */
+    nav ul.active {
+        display: flex;
+    }
+    
+    /* Estilos para enlaces en móvil */
+    nav a {
+        width: 100%;
+        padding: 15px 30px;
+        border-radius: 0; /* Sin bordes redondeados */
+    }
+    
+    /* Mostrar botón de menú móvil */
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    /* Ajustar grids a una sola columna */
+    .development-grid, 
+    .factors-grid, 
+    .laws-grid, 
+    .footprints-grid,
+    .rio-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem; /* Título aún más pequeño */
+    }
+    
+    .hero-icon {
+        font-size: 4rem; /* Icono más pequeño */
+    }
+    
+    .section-title {
+        font-size: 1.8rem; /* Títulos de sección más pequeños */
+    }
+    
+    .card {
+        padding: 20px; /* Menos padding en tarjetas */
+    }
+    
+    .water-day {
+        padding: 30px 20px; /* Menos padding */
+    }
+    
+    .climate-card {
+        padding: 30px 20px; /* Menos padding */
+    }
+    
+    .section-button {
+        padding: 12px 25px; /* Botones más pequeños */
+        font-size: 0.9rem;
+    }
+}
